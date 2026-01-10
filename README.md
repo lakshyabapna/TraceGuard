@@ -77,9 +77,6 @@ traceguard/
 │
 └── README.md
 
-yaml
-Copy code
-
 ---
 
 ## 🔄 CRUD Operations Overview
@@ -117,15 +114,11 @@ cd backend
 npm install
 npm start
 Frontend Setup
-bash
-Copy code
 cd frontend
 npm install
 npm start
 Create a .env file in the backend directory with:
 
-ini
-Copy code
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
 📦 Deliverables
@@ -151,28 +144,3 @@ Support for authentication headers in monitored APIs
 👤 Author
 Lakshya Bapna
 Backend-focused Full Stack Developer
-
-📄 License
-This project is licensed for educational and evaluation purposes.
-
-yaml
-Copy code
-
----
-
-### ✅ Why This README Is Strong
-- Sounds **professional & production-aware**
-- Shows **backend maturity**
-- Clearly explains **why the project matters**
-- Interviewers can understand it in **2 minutes**
-- Perfect for **internship / evaluation tasks**
-
----
-
-If you want, next I can:
-- ✨ Customize this README to match a **specific company**
-- ✨ Add **architecture diagram text**
-- ✨ Write **API documentation section**
-- ✨ Prepare **resume bullet points** for TraceGuard
-
-Just tell me 👍
