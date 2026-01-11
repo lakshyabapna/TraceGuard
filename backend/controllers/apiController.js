@@ -1,5 +1,6 @@
 const asyncHandler = require('express-async-handler');
 const Api = require('../models/Api');
+const Log = require('../models/Log');
 
 const getApis = asyncHandler(async (req, res) => {
     const apis = await Api.find({ user: req.user.id });
@@ -71,9 +72,35 @@ const deleteApi = asyncHandler(async (req, res) => {
     res.status(200).json({ id: req.params.id });
 });
 
+const getApiLogs = asyncHandler(async (req, res) => {
+    const api = await Api.findById(req.params.id);
+
+    if (!api) {
+        res.status(404);
+        throw new Error('API not found');
+    }
+
+    if (!req.user) {
+        res.status(401);
+        throw new Error('User not found');
+    }
+
+    if (api.user.toString() !== req.user.id) {
+        res.status(401);
+        throw new Error('User not authorized');
+    }
+
+    const logs = await Log.find({ api: req.params.id })
+        .sort({ createdAt: -1 })
+        .limit(50);
+
+    res.status(200).json(logs);
+});
+
 module.exports = {
     getApis,
     createApi,
     updateApi,
     deleteApi,
+    getApiLogs,
 };
